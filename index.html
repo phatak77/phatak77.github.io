@@ -186,7 +186,7 @@ accuracy_lda &lt;- confusionMatrix(pred_lda,myval$classe)$overall[[1]]</code></p
 <pre><code>## Loading required package: rpart</code></pre>
 <pre class="r"><code>pred_rpart = predict(mod_rpart,myval)
 accuracy_rpart &lt;- confusionMatrix(pred_rpart,myval$classe)$overall[[1]]</code></pre>
-<p>The accuracy for this model is also 0.5330501. Further running the data for random forest</p>
+<p>The accuracy for this model is also 0.5330501. Further running the data for random forest Applying on the validation test for cross validation</p>
 <pre class="r"><code>mod_rf = randomForest(classe~.,data = mytrain)
 pred_rf = predict(mod_rf,myval)
 accuracy_rf &lt;- confusionMatrix(pred_rf,myval$classe)$overall[[1]]</code></pre>
@@ -211,7 +211,9 @@ commodfit &lt;- train(classe~.,method=&quot;rf&quot;,data=predDF)
 compred &lt;- predict(commodfit,predDF)
 confusionMatrix(compred,predDF$classe)$overall[[1]]</code></pre>
 <pre><code>## [1] 0.646729</code></pre>
-<p>Stacking improves the accuracy compared to lda and rpart algorithm indivitually. But still the random forest model gives better accuracy.</p>
+<p>Stacking improves the accuracy compared to lda and rpart algorithm indivitually. But still the random forest model gives better accuracy. The out of sample error is:</p>
+<pre class="r"><code>1 - accuracy_rf</code></pre>
+<pre><code>## [1] 0.004757859</code></pre>
 </div>
 <div id="appendix-1-figures" class="section level2">
 <h2>Appendix 1: Figures</h2>
